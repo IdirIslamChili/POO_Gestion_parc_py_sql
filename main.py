@@ -1,5 +1,5 @@
 from voiture import Voiture
-from crud_db import ajouter_voiture,connecter_db, supprimer_voiture,recuperer_voitures
+from crud_db import ajouter_voiture,connecter_db, supprimer_voiture,recuperer_voitures,modifier_voiture
 
 v1 = Voiture("Volkswagen", "Jetta", 2024, 29478)
 v1.afficher_voiture()
@@ -27,3 +27,9 @@ supprimer_voiture(2)
 voitures = recuperer_voitures()
 for v in voitures:
     v.afficher_voiture()
+
+v_modifier = voitures[1]
+v_modifier.modele = "M5 Competition"
+v_modifier.annee = 2025
+v_modifier.prix = 80000
+modifier_voiture(v_modifier)
