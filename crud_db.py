@@ -26,9 +26,18 @@ def ajouter_voiture(voiture):
        prix decimal (10.2)
     );
     """)
-    sql="INSERT INTO voiture values (%s,%s,%s,%s)"
+    sql="INSERT INTO voiture values (%s,%s,%s,%s,%s)"
     values=(voiture.id, voiture.marque, voiture.modele, voiture.annee, voiture.prix )
     cursor.execute(sql, values)
     connexion.commit()
+    cursor.close()
+    connexion.close()
+def supprimer_voiture(id):
+    connexion = connecter_db()
+    cursor = connexion.cursor()
+
+    cursor.execute("DELETE FROM voiture WHERE id = %s", (id,))
+    connexion.commit()
+
     cursor.close()
     connexion.close()
