@@ -8,7 +8,21 @@ def connecter_db():
     connexion=mysql.connector.connect(
         host=config["host"],
         user=config["user"],
-        passwor=config["password"],
+        password=config["password"],
         database=config["database"]
     )
     return connexion
+
+def ajouter_voiture(voiture):
+    connexion=connecter_db()
+    cursor=connexion.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS voiture
+    id INT auto_increment primary key,
+    marque VARCHAR(70),
+    modele VARCHAR(70),
+    annee int,
+    prix decimal (10.2)
+    );
+    """)
