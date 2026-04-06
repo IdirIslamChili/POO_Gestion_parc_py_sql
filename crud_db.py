@@ -57,3 +57,19 @@ def recuperer_voitures():
     connexion.close()
 
     return voitures
+
+def modifier_voiture (voiture):
+    connexion = connecter_db()
+    cursor = connexion.cursor()
+
+    sql= """
+    UPDATE voiture
+    SET marque=%s, modele=%s, annee=%s, prix=%s
+    WHERE id=%s
+    """
+    valeurs = (voiture.marque, voiture.modele, voiture.annee, voiture.prix, voiture.id)
+    cursor.execute(sql, valeurs)
+    connexion.commit()
+
+    cursor.close()
+    connexion.close()
