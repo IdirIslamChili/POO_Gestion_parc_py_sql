@@ -1,6 +1,6 @@
 import mysql.connector
 import json
-
+from voiture import Voiture
 def connecter_db():
     with open ("config.json") as f:
         config=json.load(f)
@@ -14,8 +14,8 @@ def connecter_db():
     return connexion
 
 def ajouter_voiture(voiture):
-    connexion=connecter_db()
-    cursor=connexion.cursor()
+    connexion = connecter_db()
+    cursor = connexion.cursor()
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS voiture(
@@ -41,3 +41,19 @@ def supprimer_voiture(id):
 
     cursor.close()
     connexion.close()
+
+def recuperer_voitures():
+    connexion = connecter_db()
+    cursor = connexion.cursor()
+
+    cursor.execute("SELECT * FROM voiture")
+    resultats = cursor.fetchall()
+
+    voitures = []
+    for row in resultats:
+        voitures.append(Voiture(row[1], row[2], row[3], row[4], row[0]))
+
+    cursor.close()
+    connexion.close()
+
+    return voitures
