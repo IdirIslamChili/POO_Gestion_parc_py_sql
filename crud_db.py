@@ -23,7 +23,7 @@ def ajouter_voiture(voiture):
        marque VARCHAR(70),
        modele VARCHAR(70),
        annee int,
-       prix decimal (10.2)
+       prix decimal (10,2)
     );
     """)
     sql="INSERT INTO voiture values (%s,%s,%s,%s,%s)"
