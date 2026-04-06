@@ -1,5 +1,5 @@
 from voiture import Voiture
-from crud_db import ajouter_voiture,connecter_db, supprimer_voiture
+from crud_db import ajouter_voiture,connecter_db, supprimer_voiture,recuperer_voitures
 
 v1 = Voiture("Volkswagen", "Jetta", 2024, 29478)
 v1.afficher_voiture()
@@ -24,3 +24,6 @@ ajouter_voiture(v2)
 ajouter_voiture(v3)
 ajouter_voiture(v4)
 supprimer_voiture(2)
+voitures = recuperer_voitures()
+for v in voitures:
+    v.afficher_voiture()
