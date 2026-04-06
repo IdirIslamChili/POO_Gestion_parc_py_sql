@@ -4,11 +4,10 @@ v1.afficher_info()
 
 from crud_db import connecter_db
 try:
-    connexion = connecter_db()       # Tente de se connecter
-    print("Connexion réussie !") # Si pas d'erreur, affichage
+    connexion = connecter_db()
+    print("Connexion réussie !")
 except Exception as e:
-    print("Erreur de connexion :", e)  # Affiche l'erreur si ça ne marche pas
+    print("Erreur de connexion :", e)
 finally:
-    # Vérifie si la connexion existe et est ouverte avant de fermer
     if 'conn' in locals() and connexion.is_connected():
         connexion.close()
