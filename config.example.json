@@ -1,6 +1,7 @@
 {
   "host": "localhost",
   "user": "user_python",
-  "password": "Python2026",
+  "password": "VOTRE_MOT_DE_PASSE_ICI",
   "database": "db_voitures"
 }
+config.json
